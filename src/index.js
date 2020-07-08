@@ -6,6 +6,10 @@ import Kingdoms from './Components/kingdoms';
 import Intro from './Components/intro';
 import './index.css';
 import Grid from '@material-ui/core/Grid';
+import Styles from './Components/shared/styles';
+
+
+const {intro} = Styles;
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -16,12 +20,12 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-  <div class='fullscreen'>
+  <div className='fullscreen'>
     <Grid container>
-      <Grid item xs={12} sm={6} style={{backgroundColor:'#4287f5', display:'flex', justifyContent:'center', textAlign:'center'}}>
+      <Grid item xs={12} sm={5} style={intro}>
         <Intro />
       </Grid>
-      <Grid item sm={6}>
+      <Grid item sm={7} style={{backgroundColor:'#00203FFF'}}>
         <Kingdoms />
       </Grid>
     </Grid>
