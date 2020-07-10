@@ -1,10 +1,10 @@
 import React from 'react';
-import {useQuery, gql} from '@apollo/client';
+import {useSubscription, gql} from '@apollo/client';
 import { List, ListItem } from './shared/list';
 import { Badge } from './shared/badge';
 
 const KINGDOM = gql`
-    query Kingdom($id: uuid!) {
+    subscription Kingdom($id: uuid!) {
         Great_Houses_by_pk(id: $id) {
         id
         name
@@ -23,7 +23,7 @@ const KingdomLoader = ({
         params: { id },
     },
 }) => {
-    const { loading, error, data } = useQuery(KINGDOM, { variables: { id }});
+    const { loading, error, data } = useSubscription(KINGDOM, { variables: { id }});
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error: {error.message}</p>;

@@ -1,7 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import { ApolloProvider } from '@apollo/client';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client';
+import {getMainDefinition} from '@apollo/client/utilities';
+import {WebSocketLink} from '@apollo/link-ws';
 import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import KingdomSearch from './Components/kingdomSearch';
 import KingdomLoader from './Components/Kingdom';
@@ -12,12 +13,34 @@ import Box from '@material-ui/core/Box';
 import Styles from './Components/shared/styles';
 
 const {intro, kingdom, container, fullscreen} = Styles;
+const GRAPHQL_ENDPOINT = "yelp-got.herokuapp.com/v1/graphql";
+
+const httpLink = new HttpLink({
+  uri: `https://${GRAPHQL_ENDPOINT}`
+})
+
+const wsLink = new WebSocketLink({
+  uri: `ws://${GRAPHQL_ENDPOINT}`,
+  options:{
+    reconnect: true
+  }
+})
+
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' && 
+      definition.operation === 'subscription'
+    );
+  },
+  wsLink,
+  httpLink,
+);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: "https://yelp-got.herokuapp.com/v1/graphql"
-  })
+  link: splitLink
 })
 
 const App = () => (
