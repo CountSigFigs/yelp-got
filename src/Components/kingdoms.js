@@ -27,7 +27,7 @@ export default function Kingdoms({ newKingdoms }) {
                 <Grid item xs={12} sm={6} md={4} key={id}>
                     <Paper style={box} elevation={3}>
                         <p>
-                        <img src={sigil} alt={name} width='50px' height='50px'/> <br /> House {name} <Badge>{region}</Badge>
+                        <img src={sigil} alt={name} width='50px' height='50px'/> <br /> {name} <Badge>{region}</Badge>
                         </p>
                     </Paper>
                 </Grid>

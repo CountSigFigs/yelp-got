@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const LogoText = styled.h1`
-    font-family: "IMFell", "Open Sans";
+    font-family: 'IM Fell English', serif;
     font-size: 5rem;
-    color: grey;
+    color: 	black;
     margin: 0;    
 `
 
