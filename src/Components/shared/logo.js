@@ -9,7 +9,7 @@ const LogoText = styled.h1`
 `
 
 const Logo = () => {
-    return <LogoText>Game of Thrones: <br /> Yelp Edition</LogoText>;
+    return <LogoText>Game of Thrones: Yelp Edition</LogoText>;
 }
 
 export default Logo;

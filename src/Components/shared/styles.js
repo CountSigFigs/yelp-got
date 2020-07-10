@@ -11,11 +11,13 @@ const Styles = {
         margin: 0
     },
     intro:{
-        backgroundColor:'#ADEFD1FF', 
         display:'flex', 
+        flexDirection:'row', 
+        alignItems:'center', 
         justifyContent:'center', 
-        textAlign:'center',
-        alignItems:'center'
+        padding:'10px', 
+        backgroundColor:'#aaf0d1',
+        textAlign:'center'
     },
     box:{
         width:'175px', 

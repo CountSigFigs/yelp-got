@@ -24,7 +24,7 @@ const KingdomSearch = () => {
     
     return (
         <div>
-            <h2 style={{color:'white'}}>Seach by Great House</h2>
+            <h2 style={{color:'white'}}>Add a Review and See What Others Are Saying!</h2>
             <Search
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}

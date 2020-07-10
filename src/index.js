@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Styles from './Components/shared/styles';
 
-const {intro, kingdom, container, fullscreen} = Styles;
+const {kingdom, container, fullscreen} = Styles;
 const GRAPHQL_ENDPOINT = "yelp-got.herokuapp.com/v1/graphql";
 
 const httpLink = new HttpLink({
@@ -47,10 +47,8 @@ const App = () => (
   <BrowserRouter>
     <ApolloProvider client={client}>
       <Box style={fullscreen}>
+        <Intro />
         <Grid container style={container}>
-          <Grid item xs={12} style={intro}>
-            <Intro />
-          </Grid>
           <Grid item sm={12} style={kingdom}>
             <Switch>
               <Route path='/kingdom/:id' component={KingdomLoader} />
