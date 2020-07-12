@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { Badge } from './shared/badge';
-import { List, ListItemWithLink } from './shared/list';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
@@ -27,7 +26,7 @@ export default function Kingdoms({ newKingdoms }) {
     const renderKingdoms = (kingdoms) => {
         return (kingdoms.map(({ id, name, region, sigil }) => (
             <Grid item xs={12} sm={6} md={4} key={id}>
-                <Paper style={box} elevation={3}>
+                <Paper elevation={3} style={box}>
                     <Link to={`/kingdom/${id}`}>
                         <p>
                             <img src={sigil} alt={name} width='50px' height='50px' /> <br /> {name} <Badge>{region}</Badge>

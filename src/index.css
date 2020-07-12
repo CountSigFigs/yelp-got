@@ -44,4 +44,7 @@ h3 {
     bottom: 0;
     margin: 0;
   }
-
+  
+.MuiPaper-root:hover{
+  background-color: gray;
+};
