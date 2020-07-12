@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSubscription, gql} from '@apollo/client';
 import { List, ListItem } from './shared/list';
 import { Badge } from './shared/badge';
@@ -23,6 +23,10 @@ const KingdomLoader = ({
         params: { id },
     },
 }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     const { loading, error, data } = useSubscription(KINGDOM, { variables: { id }});
 
     if (loading) return <p>Loading...</p>
