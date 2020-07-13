@@ -22,8 +22,8 @@ const KINGDOM = gql`
 `
 
 const ADD_REVIEW = gql`
-    mutation MyMutation {
-    insert_reviews(objects: {body: "The weather at the sea was pleasant", house_id: "b6013fb5-5eda-44ac-8427-e3ca12d97e34"}) {
+mutation MyMutation($body: String!, $id: uuid) {
+    insert_reviews(objects: {body: $body, house_id: $id}) {
       affected_rows
     }
   }
