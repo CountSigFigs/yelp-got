@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSubscription, gql} from '@apollo/client';
 import { List, ListItem } from './shared/list';
 import { Badge } from './shared/badge';
+import InputForm  from './shared/inputform';
 
 const KINGDOM = gql`
     subscription Kingdom($id: uuid!) {
@@ -23,6 +24,8 @@ const KingdomLoader = ({
         params: { id },
     },
 }) => {
+
+    const [inputVal, setInputVal] = useState("")
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
@@ -38,6 +41,7 @@ const KingdomLoader = ({
             <h3>
                 {name} <Badge>{region}</Badge>
             </h3>
+            <InputForm input={inputVal} onChange={(e) => setInputVal(e.target.value)} onSubmit={() =>{}} buttonText="submit"/>
             <List>
                 {reviews.map((review) => (
                     <ListItem key={review.id}>{review.body}</ListItem>
