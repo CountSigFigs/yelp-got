@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import InputForm from './shared/inputform';
+import {InputForm} from './shared/inputform';
 import Kingdoms from './kingdoms';
 import {useLazyQuery, gql} from '@apollo/client';
+
 
 const SEARCH = gql`
     query Search($match: String){

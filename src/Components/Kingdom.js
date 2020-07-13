@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSubscription, useMutation, gql } from '@apollo/client';
 import { List, ListItem } from './shared/list';
 import { Badge } from './shared/badge';
-import InputForm from './shared/inputform';
+import { AddReview } from './shared/inputform';
 import { Link } from 'react-router-dom';
 import {Button} from './shared/form';
 
@@ -56,7 +56,7 @@ const KingdomLoader = ({
                 {name} <Badge>{region}</Badge>
             </h3>
             <p style={{color:'white'}}>How was your experience at House {name}? Others want to know!</p>
-            <InputForm
+            <AddReview
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit={() => {
