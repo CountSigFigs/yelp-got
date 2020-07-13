@@ -28,7 +28,7 @@ const KingdomSearch = () => {
     
     return (
         <div>
-            <h2 style={{color:'white'}}>Add a Review and See What Others Are Saying!</h2>
+            <h2 style={{color:'white'}}>Search by house or click on one below <br /> to add a review and see what others are saying!</h2>
             <InputForm
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}

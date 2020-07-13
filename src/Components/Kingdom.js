@@ -4,6 +4,7 @@ import { List, ListItem } from './shared/list';
 import { Badge } from './shared/badge';
 import InputForm from './shared/inputform';
 import { Link } from 'react-router-dom';
+import {Button} from './shared/form';
 
 const KINGDOM = gql`
     subscription Kingdom($id: uuid!) {
@@ -50,10 +51,11 @@ const KingdomLoader = ({
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
     return (
         <div>
-            <img src={sigil} alt={name} style={{ height: '125px', marginTop: '10px' }} />
+            <img src={sigil} alt={name} style={{ height: '125px', marginTop: '25px' }} />
             <h3 style={{ color: 'white' }}>
                 {name} <Badge>{region}</Badge>
             </h3>
+            <p style={{color:'white'}}>How was your experience at House {name}? Others want to know!</p>
             <InputForm
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
@@ -67,7 +69,7 @@ const KingdomLoader = ({
                     <ListItem key={review.id}>{review.body}</ListItem>
                 ))}
             </List>
-            <Link to='/'><div style={{color:'white'}}>Go Back</div></Link>
+            <Link to='/'><Button><i class="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
         </div>
     )
 }

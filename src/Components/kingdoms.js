@@ -38,8 +38,8 @@ export default function Kingdoms({ newKingdoms }) {
         )
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>
+    if (loading) return <p style={{color:'white'}}>Loading...</p>;
+    if (error) return <p style={{color:'white'}}>Error: {error.message}</p>
 
     return (
         <Box>

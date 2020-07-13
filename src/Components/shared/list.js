@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const List = styled.ul`
   padding: 0;
-  margin: 0 0 100px;
+  margin: 0 0 50px;
   max-width: 600px;
   display: flex;
   flex-direction: column;
