@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import InputForm from './shared/inputform';
 import Kingdoms from './kingdoms';
 import {useLazyQuery, gql} from '@apollo/client';
@@ -18,6 +18,10 @@ const KingdomSearch = () => {
 
     const [inputVal, setInputVal] = useState("");
     const [search, { loading, error, data}] = useLazyQuery(SEARCH);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error: {error.message}</p>

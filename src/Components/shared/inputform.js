@@ -5,20 +5,20 @@ import {Input, Button} from './form';
 const Container = styled.div`
     display: flex;
     margin: 0 auto;
-    max-width:650px;
+    max-width:500px;
     align-items: center;
     > button {
         margin-left: 1rem;
     }
 `;
 
-const InputForm = ({ inputVal, onChange, onSubmit, buttonText}) => {
+const InputForm = ({ inputVal, onChange, onSubmit, buttonText }) => {
     return (
-        <Container>
-            <Input value={inputVal} onChange={onChange} />
-            <Button onClick={onSubmit}>{buttonText || "Search"}</Button>
-        </Container>
-    )
-};
+      <Container>
+        <Input value={inputVal} onChange={onChange} />
+        <Button onClick={onSubmit}>{buttonText || "Search"}</Button>
+      </Container>
+    );
+  };
 
 export default InputForm;
