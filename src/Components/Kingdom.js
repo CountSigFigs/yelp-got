@@ -49,6 +49,8 @@ const KingdomLoader = ({
     if (error) return <p>Error: {error.message}</p>;
 
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
+    const isEnabled = inputVal.length > 5 ? true: false;
+
     return (
         <div>
             <img src={sigil} alt={name} style={{ height: '125px', marginTop: '25px' }} />
@@ -58,6 +60,7 @@ const KingdomLoader = ({
             <p style={{color:'white'}}>How was your experience at House {name}? Others want to know!</p>
             <AddReview
                 inputVal={inputVal}
+                isEnabled={isEnabled}
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit={() => {
                 addReview({ variables: { id, body: inputVal } })
