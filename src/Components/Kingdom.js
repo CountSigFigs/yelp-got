@@ -76,7 +76,7 @@ const KingdomLoader = ({
                     <ListItem key={review.id}>{review.body}</ListItem>
                 ))}
             </List>
-            <Link to='/'><Button style={{marginTop:'15px'}}><i className="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
+            <Link to='/'><Button style={{marginTop:'25px'}}><i className="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
         </div>
     )
 }

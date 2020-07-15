@@ -7,6 +7,7 @@ import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import KingdomSearch from './Components/kingdomSearch';
 import KingdomLoader from './Components/Kingdom';
 import Intro from './Components/intro';
+import Footer from './Components/footer';
 import './index.css';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -54,6 +55,9 @@ const App = () => (
               <Route path='/kingdom/:id' component={KingdomLoader} />
               <Route path='/' component={KingdomSearch} />
             </Switch>
+          </Grid>
+          <Grid item sm={12}>
+            <Footer />
           </Grid>
         </Grid>
       </Box>

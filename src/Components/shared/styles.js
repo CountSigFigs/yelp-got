@@ -1,6 +1,7 @@
 const Styles = {
     container:{
-        height:'100%'
+        height:'100%',
+        textAlign:'center'
     },
     fullscreen:{
         position: 'absolute',
