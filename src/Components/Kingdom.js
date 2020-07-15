@@ -52,8 +52,6 @@ const KingdomLoader = ({
 
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
 
-    //const isEnabled = inputVal.length > 10 ? true: false;
-
     return (
         <div>
             <img src={sigil} alt={name} style={{ height: '125px', marginTop: '25px' }} />
@@ -72,13 +70,13 @@ const KingdomLoader = ({
                 }}}
                 buttonText="Submit"
             />
-            <p style={{color:'red'}}>{errorMessage}</p>;
+            <p style={{color:'red'}}>{errorMessage}</p>
             <List>
                 {reviews.map((review) => (
                     <ListItem key={review.id}>{review.body}</ListItem>
                 ))}
             </List>
-            <Link to='/'><Button><i class="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
+            <Link to='/'><Button style={{marginTop:'15px'}}><i className="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
         </div>
     )
 }
