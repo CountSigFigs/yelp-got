@@ -31,11 +31,11 @@ export const InputForm = ({ inputVal, onChange, onSubmit, buttonText}) => {
     );
   };
 
-export const AddReview = ({ inputVal, onChange, onSubmit, buttonText, isEnabled }) => {
+export const AddReview = ({ inputVal, onChange, onSubmit, buttonText}) => {
     return (
       <Form>
         <Input value={inputVal} onChange={onChange} />
-        <Button onClick={onSubmit} disabled={!isEnabled}>{buttonText || "Search"}</Button>
+        <Button onClick={onSubmit}>{buttonText || "Search"}</Button>
       </Form>
     );
   };

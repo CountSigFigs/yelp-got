@@ -37,19 +37,22 @@ const KingdomLoader = ({
     },
 }) => {
 
-    const [inputVal, setInputVal] = useState(" ")
+    const [inputVal, setInputVal] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
     const { loading, error, data } = useSubscription(KINGDOM, { variables: { id } });
-    const [addReview] = useMutation(ADD_REVIEW)
+    const [addReview] = useMutation(ADD_REVIEW);
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error: {error.message}</p>;
 
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
-    const isEnabled = inputVal.length > 5 ? true: false;
+
+    //const isEnabled = inputVal.length > 10 ? true: false;
 
     return (
         <div>
@@ -60,13 +63,16 @@ const KingdomLoader = ({
             <p style={{color:'white'}}>How was your experience at House {name}? Others want to know!</p>
             <AddReview
                 inputVal={inputVal}
-                isEnabled={isEnabled}
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit={() => {
+                    if (inputVal.length < 5) {setErrorMessage("Your response must be at least ten characters")} else {
                 addReview({ variables: { id, body: inputVal } })
-                }}
+                setInputVal("")
+                setErrorMessage("")
+                }}}
                 buttonText="Submit"
             />
+            <p style={{color:'red'}}>{errorMessage}</p>;
             <List>
                 {reviews.map((review) => (
                     <ListItem key={review.id}>{review.body}</ListItem>
