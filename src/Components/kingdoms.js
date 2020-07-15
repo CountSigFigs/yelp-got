@@ -38,7 +38,7 @@ export default function Kingdoms({ newKingdoms }) {
         )
     };
 
-    if (loading) return <p style={{color:'white'}}>Loading...</p>;
+    if (loading) return <p style={{color:'white'}}><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>Loading...</p>;
     if (error) return <p style={{color:'white'}}>Error: {error.message}</p>
 
     return (

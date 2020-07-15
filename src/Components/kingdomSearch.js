@@ -24,7 +24,7 @@ const KingdomSearch = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return <i class="fa fa-spinner fa-pulse fa-3x fa-fw">Loading...</i>
     if (error) return <p>Error: {error.message}</p>
     
     return (
