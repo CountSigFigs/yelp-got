@@ -47,8 +47,8 @@ const KingdomLoader = ({
     const { loading, error, data } = useSubscription(KINGDOM, { variables: { id } });
     const [addReview] = useMutation(ADD_REVIEW);
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error.message}</p>;
+    if (loading) return <p style={{color:'white'}}>Loading...</p>
+    if (error) return <p style={{color:'white'}}>Error: {error.message}</p>;
 
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
 
