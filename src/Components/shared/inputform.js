@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {Input, Button} from './form';
+import {Input, Button, TextArea} from './form';
 
 const Container = styled.div`
     display: flex;
@@ -33,8 +33,9 @@ export const InputForm = ({ inputVal, onChange, onSubmit, buttonText}) => {
 
 export const AddReview = ({ inputVal, onChange, onSubmit, buttonText}) => {
     return (
-      <Form>
-        <Input value={inputVal} onChange={onChange} />
+      <Form style={{display:'block'}}>
+        <label style={{color:'white', float:'left'}}>Your Review:</label>
+        <TextArea  value={inputVal} onChange={onChange} />
         <Button onClick={onSubmit}>{buttonText || "Search"}</Button>
       </Form>
     );

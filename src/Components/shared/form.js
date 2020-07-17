@@ -19,7 +19,6 @@ export const Button = styled.button`
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
-  display: inline-block;
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
@@ -39,3 +38,24 @@ export const Button = styled.button`
     border-color: #005cbf;
   }
 `;
+
+export const TextArea = styled.textarea`
+	height: 175px;	
+  resize: none; 
+  overflow: auto;
+  width: 500px;	
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	padding: 10px;
+	font-size: 1em;
+	color: #676767;
+	transition: border 0.5s;
+	-webkit-transition: border 0.5s;
+	-moz-transition: border 0.5s;
+	-o-transition: border 0.5s;	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+`
+

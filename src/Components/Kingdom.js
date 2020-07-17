@@ -4,7 +4,8 @@ import { List, ListItem } from './shared/list';
 import { Badge } from './shared/badge';
 import { AddReview } from './shared/inputform';
 import { Link } from 'react-router-dom';
-import {Button} from './shared/form';
+import { Button } from './shared/form';
+import { timeDifferenceForDate } from './utils';
 
 const KINGDOM = gql`
     subscription Kingdom($id: uuid!) {
@@ -73,12 +74,13 @@ const KingdomLoader = ({
             <p style={{color:'red'}}>{errorMessage}</p>
             <List>
                 {reviews.map((review) => (
-                    <ListItem key={review.id}>{review.body}</ListItem>
+                    <ListItem key={review.id}>{review.body}<br /><em style={{color:'grey'}}>-{timeDifferenceForDate(review.created_at)}</em></ListItem>
                 ))}
             </List>
             <Link to='/'><Button style={{marginTop:'25px'}}><i className="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
         </div>
     )
 }
+
 
 export default KingdomLoader;
