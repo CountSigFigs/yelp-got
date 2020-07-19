@@ -7,16 +7,7 @@ import { Link } from 'react-router-dom';
 import { Button } from './shared/form';
 import { timeDifferenceForDate } from './utils';
 import Ratings from 'react-ratings-declarative';
-
-
-function getAverageRating(ratings){
-    let totalRatings = 0;
-    for (let i =0; i < ratings.length; i++){
-        totalRatings += ratings[i].rating;
-    }
-    let average = (totalRatings / ratings.length).toFixed(2)
-    return Number(average);
-}
+import {getAverageRating} from './utils';
 
 const KINGDOM = gql`
     subscription Kingdom($id: uuid!) {

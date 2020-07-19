@@ -26,10 +26,17 @@ function timeDifference(current, previous) {
     }
   }
   
-  export function timeDifferenceForDate(date) {
+export function timeDifferenceForDate(date) {
     const now = new Date().getTime()
     const updated = new Date(date).getTime()
     return timeDifference(now, updated)
-  }
+};
 
-  
+export function getAverageRating(ratings){
+    let totalRatings = 0;
+    for (let i =0; i < ratings.length; i++){
+        totalRatings += ratings[i].rating;
+    }
+    let average = (totalRatings / ratings.length).toFixed(2)
+    return Number(average);
+};
