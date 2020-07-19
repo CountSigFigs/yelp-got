@@ -6,6 +6,17 @@ import { AddReview } from './shared/inputform';
 import { Link } from 'react-router-dom';
 import { Button } from './shared/form';
 import { timeDifferenceForDate } from './utils';
+import Ratings from 'react-ratings-declarative';
+
+
+function getAverageRating(ratings){
+    let totalRatings = 0;
+    for (let i =0; i < ratings.length; i++){
+        totalRatings += ratings[i].rating;
+    }
+    let average = (totalRatings / ratings.length).toFixed(2)
+    return Number(average);
+}
 
 const KINGDOM = gql`
     subscription Kingdom($id: uuid!) {
@@ -17,6 +28,7 @@ const KINGDOM = gql`
             id
             body
             created_at
+            rating
         }
         sigil
       }
@@ -52,10 +64,23 @@ const KingdomLoader = ({
     if (error) return <p style={{color:'white'}}>Error: {error.message}</p>;
 
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
+    let averageRating = getAverageRating(reviews);
 
     return (
         <div>
             <img src={sigil} alt={name} style={{ height: '125px', marginTop: '25px' }} />
+            <br />
+            <Ratings
+                rating={averageRating}
+                widgetDimensions="40px"
+                widgetSpacings="15px"
+            >
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                 <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+            </Ratings>
             <h3 style={{ color: 'white' }}>
                 {name} <Badge>{region}</Badge>
             </h3>
@@ -74,7 +99,22 @@ const KingdomLoader = ({
             <p style={{color:'red'}}>{errorMessage}</p>
             <List>
                 {reviews.map((review) => (
-                    <ListItem key={review.id}>{review.body}<br /><em style={{color:'grey'}}>-{timeDifferenceForDate(review.created_at)}</em></ListItem>
+                    <ListItem key={review.id}>
+                        <Ratings
+                            rating={review.rating}
+                            widgetDimensions="40px"
+                            widgetSpacings="15px"
+                        >
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                        </Ratings>
+                         <br/>
+                        {review.body}<br />
+                        <em style={{color:'grey'}}>-{timeDifferenceForDate(review.created_at)}</em>
+                    </ListItem>
                 ))}
             </List>
             <Link to='/'><Button style={{marginTop:'25px'}}><i className="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
