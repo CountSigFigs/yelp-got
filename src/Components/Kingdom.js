@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Button } from './shared/form';
 import { timeDifferenceForDate } from './utils';
 import Ratings from 'react-ratings-declarative';
-import {getAverageRating} from './utils';
+import { getAverageRating } from './utils';
 
 const KINGDOM = gql`
     subscription Kingdom($id: uuid!) {
@@ -43,6 +43,7 @@ const KingdomLoader = ({
 
     const [inputVal, setInputVal] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [userRating, setUserRating] = useState(0);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -51,43 +52,56 @@ const KingdomLoader = ({
     const { loading, error, data } = useSubscription(KINGDOM, { variables: { id } });
     const [addReview] = useMutation(ADD_REVIEW);
 
-    if (loading) return <p style={{color:'white'}}>Loading...</p>
-    if (error) return <p style={{color:'white'}}>Error: {error.message}</p>;
+    if (loading) return <p style={{ color: 'white' }}>Loading...</p>
+    if (error) return <p style={{ color: 'white' }}>Error: {error.message}</p>;
 
     const { name, region, sigil, reviews } = data.Great_Houses_by_pk;
     let averageRating = getAverageRating(reviews);
 
     return (
         <div>
-            <img src={sigil} alt={name} style={{ height: '125px', marginTop: '25px' }} />
+            <img src={sigil} alt={name} style={{ height: '150px', marginTop: '25px' }} />
             <br />
             <Ratings
                 rating={averageRating}
                 widgetDimensions="40px"
                 widgetSpacings="15px"
             >
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                 <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='40px' />
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='40px' />
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='40px' />
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='40px' />
+                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='40px' />
             </Ratings>
             <h3 style={{ color: 'white' }}>
                 {name} <Badge>{region}</Badge>
             </h3>
-            <p style={{color:'white'}}>How was your experience at House {name}? Others want to know!</p>
+            <p style={{ color: 'white' }}>How was your experience at House {name}? Others want to know!</p>
+            <div style={{color:'white'}}>Your Review:</div>
+            <Ratings
+                rating={userRating}
+                widgetRatedColors="yellow"
+                changeRating={setUserRating}
+            >
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+            </Ratings>
             <AddReview
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit={() => {
-                    if (inputVal.length < 5) {setErrorMessage("Your response must be at least ten characters")} else {
-                addReview({ variables: { id, body: inputVal } })
-                setInputVal("")
-                setErrorMessage("")
-                }}}
+                    if (inputVal.length < 5) { setErrorMessage("Your response must be at least ten characters") } else {
+                        addReview({ variables: { id, body: inputVal } })
+                        setInputVal("")
+                        setErrorMessage("")
+                    }
+                }}
                 buttonText="Submit"
             />
-            <p style={{color:'red'}}>{errorMessage}</p>
+            <p style={{ color: 'red' }}>{errorMessage}</p>
             <List>
                 {reviews.map((review) => (
                     <ListItem key={review.id}>
@@ -96,19 +110,19 @@ const KingdomLoader = ({
                             widgetDimensions="40px"
                             widgetSpacings="15px"
                         >
-                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
-                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px'/>
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='25px' />
                         </Ratings>
-                         <br/>
+                        <br />
                         {review.body}<br />
-                        <em style={{color:'grey'}}>-{timeDifferenceForDate(review.created_at)}</em>
+                        <em style={{ color: 'grey' }}>-{timeDifferenceForDate(review.created_at)}</em>
                     </ListItem>
                 ))}
             </List>
-            <Link to='/'><Button style={{marginTop:'25px'}}><i className="fas fa-arrow-left" style={{marginRight:'2px'}}></i>Go Back</Button></Link>
+            <Link to='/'><Button style={{ marginTop: '25px' }}><i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Go Back</Button></Link>
         </div>
     )
 }

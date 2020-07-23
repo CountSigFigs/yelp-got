@@ -28,8 +28,8 @@ const KINGDOMS = gql`
 export default function Kingdoms({ newKingdoms }) {
     const { loading, error, data } = useQuery(KINGDOMS);
     const renderKingdoms = (kingdoms) => {
-       
-       // console.log(kingdoms[0].reviews[0].rating + kingdoms[0].reviews[0].rating )
+
+        // console.log(kingdoms[0].reviews[0].rating + kingdoms[0].reviews[0].rating )
         //console.log(totalNum);
         //add rating functionality to ratings component with jsx;
         return (kingdoms.map(({ id, name, region, sigil, reviews }) => (
@@ -37,17 +37,18 @@ export default function Kingdoms({ newKingdoms }) {
             <Grid item xs={12} sm={6} md={4} key={id}>
                 <Paper elevation={3} style={box}>
                     <Link to={`/kingdom/${id}`}>
-                    <Ratings
-                    rating={getAverageRating(reviews)}
-                widgetDimensions="40px"
-                widgetSpacings="15px"
-            >
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='10px'/>
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='10px'/>
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='10px'/>
-                <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='10px'/>
-                 <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='10px'/>
-            </Ratings>
+                        <Ratings
+                            rating={getAverageRating(reviews)}
+                            widgetDimensions="40px"
+                            widgetSpacings="10px"
+                            style={{paddingTop:'5px'}}
+                        >
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='20px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='20px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='20px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='20px' />
+                            <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='20px' />
+                        </Ratings>
                         <p>
                             <img src={sigil} alt={name} width='50px' height='50px' /> <br /> {name} <Badge>{region}</Badge>
                         </p>
@@ -58,8 +59,8 @@ export default function Kingdoms({ newKingdoms }) {
         )
     };
 
-    if (loading) return <p style={{color:'white'}}><i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>Loading...</p>;
-    if (error) return <p style={{color:'white'}}>Error: {error.message}</p>
+    if (loading) return <p style={{ color: 'white' }}><i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>Loading...</p>;
+    if (error) return <p style={{ color: 'white' }}>Error: {error.message}</p>
 
     return (
         <Box>

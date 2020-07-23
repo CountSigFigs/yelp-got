@@ -21,13 +21,13 @@ const Styles = {
         textAlign:'center'
     },
     box:{
-        width:'175px', 
-        height:'175px', 
+        width:'215px', 
+        height:'225px', 
         display:'flex', 
         justifyContent:'center', 
         alignItems:'center', 
         textAlign:'center', 
-        padding:'10px',
+        padding:'15px',
         margin:'7px auto'
     },
     kingdom:{
