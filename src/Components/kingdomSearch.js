@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {InputForm} from './shared/inputform';
 import Kingdoms from './kingdoms';
 import {useLazyQuery, gql} from '@apollo/client';
+import { Button } from './shared/form';
 
 const SEARCH = gql`
     query Search($match: String){
@@ -20,7 +21,7 @@ const SEARCH = gql`
 const KingdomSearch = () => {
 
     const [inputVal, setInputVal] = useState("");
-    const [search, { loading, error, data}] = useLazyQuery(SEARCH);
+    let [search, { loading, error, data}] = useLazyQuery(SEARCH);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -37,6 +38,13 @@ const KingdomSearch = () => {
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit = {() => search({ variables: { match: `%${inputVal}%` } })}/>
             <Kingdoms newKingdoms={data ? data.Great_Houses : null} />
+            {data&& 
+                    <Button style={{ margin: '25px 0' }} 
+                    onClick={
+                        () => {setInputVal(''); search();}}>
+                    <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Reset Search
+                    </Button>
+            }
         </div>
     )
 };
