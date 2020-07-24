@@ -8,12 +8,13 @@ import Paper from '@material-ui/core/Paper';
 import Styles from './shared/styles';
 import Ratings from 'react-ratings-declarative';
 import { getAverageRating } from './utils';
+import { Button } from './shared/form';
 
 const { box } = Styles;
 
 const KINGDOMS = gql`
     {
-        Great_Houses {
+        Great_Houses(order_by: {name: asc}){
             id
             name
             region
@@ -28,7 +29,8 @@ const KINGDOMS = gql`
 export default function Kingdoms({ newKingdoms }) {
     const { loading, error, data } = useQuery(KINGDOMS);
     const renderKingdoms = (kingdoms) => {
-
+    
+       if (kingdoms.length < 1) return <div style={{color:'red'}}>No houses returned. Try again. <br />(hint: search by  letters in the great seven houses. Ex: st)</div>
         // console.log(kingdoms[0].reviews[0].rating + kingdoms[0].reviews[0].rating )
         //console.log(totalNum);
         //add rating functionality to ratings component with jsx;
@@ -67,6 +69,11 @@ export default function Kingdoms({ newKingdoms }) {
             <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
                 {renderKingdoms(newKingdoms || data.Great_Houses)}
             </Grid>
+            {newKingdoms && 
+                    <Button style={{ margin: '25px 0' }} onClick={() => newKingdoms = null}>
+                    <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Go Back
+                    </Button>
+            }
         </Box>
     )
 }

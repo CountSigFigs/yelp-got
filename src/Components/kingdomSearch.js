@@ -9,7 +9,10 @@ const SEARCH = gql`
             id,
             name, 
             region,
-            sigil
+            sigil,
+            reviews {
+                rating
+            }
         }
     }
 `
