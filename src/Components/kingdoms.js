@@ -50,7 +50,7 @@ export default function Kingdoms({ newKingdoms }) {
                             <Ratings.Widget widgetRatedColor="rebeccapurple" widgetDimension='20px' />
                         </Ratings>
                         <p>
-                            <img src={sigil} alt={name} width='50px' height='50px' /> <br /> {name} <Badge>{region}</Badge>
+                            <img src={sigil} alt={name} width='50px' height='50px' /> <br /> {name} <br /> <Badge>{region}</Badge>
                         </p>
                     </Link>
                 </Paper>

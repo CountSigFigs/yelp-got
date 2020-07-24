@@ -27,8 +27,8 @@ const KINGDOM = gql`
 `
 
 const ADD_REVIEW = gql`
-mutation MyMutation($body: String!, $id: uuid) {
-    insert_reviews(objects: {body: $body, house_id: $id}) {
+mutation MyMutation($body: String!, $id: uuid, $rating: Int) {
+    insert_reviews(objects: {body: $body, house_id: $id, rating:$rating}) {
       affected_rows
     }
   }
@@ -93,10 +93,11 @@ const KingdomLoader = ({
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit={() => {
-                    if (inputVal.length < 5) { setErrorMessage("Your response must be at least ten characters") } else {
-                        addReview({ variables: { id, body: inputVal } })
+                    if (inputVal.length < 10) { setErrorMessage("Your response must be at least ten characters") } else {
+                        addReview({ variables: { id, body: inputVal, rating:userRating } })
                         setInputVal("")
                         setErrorMessage("")
+                        setUserRating(0)
                     }
                 }}
                 buttonText="Submit"
@@ -122,7 +123,7 @@ const KingdomLoader = ({
                     </ListItem>
                 ))}
             </List>
-            <Link to='/'><Button style={{ marginTop: '25px' }}><i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Go Back</Button></Link>
+            <Link to='/'><Button style={{ margin: '25px 0' }}><i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Go Back</Button></Link>
         </div>
     )
 }

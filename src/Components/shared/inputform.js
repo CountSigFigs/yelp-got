@@ -34,7 +34,7 @@ export const InputForm = ({ inputVal, onChange, onSubmit, buttonText}) => {
 export const AddReview = ({ inputVal, onChange, onSubmit, buttonText}) => {
     return (
       <Form style={{display:'block'}}>
-        <TextArea  value={inputVal} onChange={onChange} />
+        <TextArea  value={inputVal} onChange={onChange}/>
         <Button onClick={onSubmit}>{buttonText || "Search"}</Button>
       </Form>
     );
