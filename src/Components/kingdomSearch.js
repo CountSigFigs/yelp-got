@@ -22,6 +22,7 @@ const KingdomSearch = () => {
 
     const [inputVal, setInputVal] = useState("");
     const [buttonDisplay, setButtonDisplay] = useState(true)
+    const [errorMessage, setErrorMessage] = useState('')
     let [search, { loading, error, data }] = useLazyQuery(SEARCH);
 
     useEffect(() => {
@@ -38,15 +39,15 @@ const KingdomSearch = () => {
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onSubmit={
-                    () => { search({ variables: { match: `%${inputVal}%` } }); setButtonDisplay(!buttonDisplay) }}/>
+                    () => { search({ variables: { match: `%${inputVal}%` } }); setButtonDisplay(false) }}/>
             <Kingdoms newKingdoms={data ? data.Great_Houses : null} />
             <Button style={{ margin: '25px 0'}}
                 hidden={buttonDisplay}
                 onClick={
-                    () => { setInputVal(''); search(); setButtonDisplay(!buttonDisplay)}}>
+                    () => { setInputVal(''); search(); setButtonDisplay(true)}}>
                 <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Reset Search
             </Button>
-
+             <p>{errorMessage}</p>      
         </div>
     )
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import {Input, Button, TextArea} from './form';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -35,6 +36,7 @@ export const AddReview = ({ inputVal, onChange, onSubmit, buttonText}) => {
     return (
       <Form style={{display:'block'}}>
         <TextArea  value={inputVal} onChange={onChange}/>
+        <Link to='/'><Button style={{ margin: '25px 0' }}><i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Go Back</Button></Link>
         <Button onClick={onSubmit}>{buttonText || "Search"}</Button>
       </Form>
     );
