@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {InputForm} from './shared/inputform';
+import React, { useState, useEffect } from 'react';
+import { InputForm } from './shared/inputform';
 import Kingdoms from './kingdoms';
-import {useLazyQuery, gql} from '@apollo/client';
+import { useLazyQuery, gql } from '@apollo/client';
 import { Button } from './shared/form';
 
 const SEARCH = gql`
@@ -21,30 +21,32 @@ const SEARCH = gql`
 const KingdomSearch = () => {
 
     const [inputVal, setInputVal] = useState("");
-    let [search, { loading, error, data}] = useLazyQuery(SEARCH);
+    const [buttonDisplay, setButtonDisplay] = useState(true)
+    let [search, { loading, error, data }] = useLazyQuery(SEARCH);
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    if (loading) return <p style={{color:'white'}}>Loading...</p>
-    if (error) return <p style={{color:'white'}}>Error: {error.message}</p>
+    if (loading) return <p style={{ color: 'white' }}>Loading...</p>
+    if (error) return <p style={{ color: 'white' }}>Error: {error.message}</p>
 
     return (
         <div>
-            <h2 style={{color:'white'}}>Search by one of the seven great kingdoms or click on one below <br /> to add a review and see what others are saying!</h2>
+            <h2 style={{ color: 'white' }}>Search by one of the seven great kingdoms or click on one below <br /> to add a review and see what others are saying!</h2>
             <InputForm
                 inputVal={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
-                onSubmit = {() => search({ variables: { match: `%${inputVal}%` } })}/>
+                onSubmit={
+                    () => { search({ variables: { match: `%${inputVal}%` } }); setButtonDisplay(!buttonDisplay) }}/>
             <Kingdoms newKingdoms={data ? data.Great_Houses : null} />
-            {data&& 
-                    <Button style={{ margin: '25px 0' }} 
-                    onClick={
-                        () => {setInputVal(''); search();}}>
-                    <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Reset Search
-                    </Button>
-            }
+            <Button style={{ margin: '25px 0'}}
+                hidden={buttonDisplay}
+                onClick={
+                    () => { setInputVal(''); search(); setButtonDisplay(!buttonDisplay)}}>
+                <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Reset Search
+            </Button>
+
         </div>
     )
 };
