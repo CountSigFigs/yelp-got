@@ -37,7 +37,7 @@ const KingdomSearch = () => {
             <h2 style={{ color: 'white' }}>Search by one of the seven great kingdoms or click on one below <br /> to add a review and see what others are saying!</h2>
             <InputForm
                 inputVal={inputVal}
-                onChange={(e) => setInputVal(e.target.value)}
+                onChange={(e) => {setInputVal(e.target.value)}}
                 onSubmit={
                     () => { search({ variables: { match: `%${inputVal}%` } }); setButtonDisplay(false) }}/>
             <Kingdoms newKingdoms={data ? data.Great_Houses : null} />
@@ -47,7 +47,6 @@ const KingdomSearch = () => {
                     () => { setInputVal(''); search(); setButtonDisplay(true)}}>
                 <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Reset Search
             </Button>
-             <p>{errorMessage}</p>      
         </div>
     )
 };
