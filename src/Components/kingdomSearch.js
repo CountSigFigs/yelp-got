@@ -38,12 +38,13 @@ const KingdomSearch = () => {
             <InputForm
                 inputVal={inputVal}
                 onChange={(e) => {setInputVal(e.target.value)}}
-                onSubmit={
-                    () => { search({ variables: { match: `%${inputVal}%` } }); setButtonDisplay(false) }}/>
+                onSubmit={ inputVal.length < 1 ? () => setErrorMessage('Error: You must at least type one letter to search by') 
+                : () => { search({ variables: { match: `%${inputVal}%` } }); setButtonDisplay(false); setErrorMessage("") }}/>
+            <p style={{color:'red'}}>{errorMessage}</p>
             <Kingdoms newKingdoms={data ? data.Great_Houses : null} />
             <Button style={{ margin: '25px 0'}}
                 hidden={buttonDisplay}
-                onClick={
+                onClick={ 
                     () => { setInputVal(''); search(); setButtonDisplay(true)}}>
                 <i className="fas fa-arrow-left" style={{ marginRight: '2px' }}></i>Reset Search
             </Button>
