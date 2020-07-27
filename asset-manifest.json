@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/CountSigFigs/yelp-got/static/css/main.e8538eb4.chunk.css",
-    "main.js": "/CountSigFigs/yelp-got/static/js/main.1ce3db1b.chunk.js",
-    "main.js.map": "/CountSigFigs/yelp-got/static/js/main.1ce3db1b.chunk.js.map",
-    "runtime-main.js": "/CountSigFigs/yelp-got/static/js/runtime-main.3be426cf.js",
-    "runtime-main.js.map": "/CountSigFigs/yelp-got/static/js/runtime-main.3be426cf.js.map",
-    "static/js/2.8ab5959e.chunk.js": "/CountSigFigs/yelp-got/static/js/2.8ab5959e.chunk.js",
-    "static/js/2.8ab5959e.chunk.js.map": "/CountSigFigs/yelp-got/static/js/2.8ab5959e.chunk.js.map",
-    "index.html": "/CountSigFigs/yelp-got/index.html",
-    "precache-manifest.1dd8a7c81b2ed218de8ec62e052d31b0.js": "/CountSigFigs/yelp-got/precache-manifest.1dd8a7c81b2ed218de8ec62e052d31b0.js",
-    "service-worker.js": "/CountSigFigs/yelp-got/service-worker.js",
-    "static/css/main.e8538eb4.chunk.css.map": "/CountSigFigs/yelp-got/static/css/main.e8538eb4.chunk.css.map",
-    "static/js/2.8ab5959e.chunk.js.LICENSE.txt": "/CountSigFigs/yelp-got/static/js/2.8ab5959e.chunk.js.LICENSE.txt",
-    "static/media/tyrion.png": "/CountSigFigs/yelp-got/static/media/tyrion.a196bcb6.png"
+    "main.css": "/yelp-got/static/css/main.e8538eb4.chunk.css",
+    "main.js": "/yelp-got/static/js/main.1ce3db1b.chunk.js",
+    "main.js.map": "/yelp-got/static/js/main.1ce3db1b.chunk.js.map",
+    "runtime-main.js": "/yelp-got/static/js/runtime-main.ad48641f.js",
+    "runtime-main.js.map": "/yelp-got/static/js/runtime-main.ad48641f.js.map",
+    "static/js/2.8ab5959e.chunk.js": "/yelp-got/static/js/2.8ab5959e.chunk.js",
+    "static/js/2.8ab5959e.chunk.js.map": "/yelp-got/static/js/2.8ab5959e.chunk.js.map",
+    "index.html": "/yelp-got/index.html",
+    "precache-manifest.ecc7db7f6a897df2193f5d0ee810b89e.js": "/yelp-got/precache-manifest.ecc7db7f6a897df2193f5d0ee810b89e.js",
+    "service-worker.js": "/yelp-got/service-worker.js",
+    "static/css/main.e8538eb4.chunk.css.map": "/yelp-got/static/css/main.e8538eb4.chunk.css.map",
+    "static/js/2.8ab5959e.chunk.js.LICENSE.txt": "/yelp-got/static/js/2.8ab5959e.chunk.js.LICENSE.txt",
+    "static/media/tyrion.png": "/yelp-got/static/media/tyrion.a196bcb6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.3be426cf.js",
+    "static/js/runtime-main.ad48641f.js",
     "static/js/2.8ab5959e.chunk.js",
     "static/css/main.e8538eb4.chunk.css",
     "static/js/main.1ce3db1b.chunk.js"
