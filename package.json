@@ -1,6 +1,6 @@
 {
   "name": "yelpie",
-  "homepage": "https://CountSigFigs.github.io/yelp-got",
+  "homepage": "https://github.com/CountSigFigs/yelp-got",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
