@@ -20,7 +20,7 @@ const httpLink = new HttpLink({
 })
 
 const wsLink = new WebSocketLink({
-  uri: `wss://${GRAPHQL_ENDPOINT}`,
+  uri: `ws://${GRAPHQL_ENDPOINT}`,
   options:{
     reconnect: true
   }
@@ -40,7 +40,7 @@ const splitLink = split(
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: splitLink
+  link: httpLink
 })
 
 const App = () => (
