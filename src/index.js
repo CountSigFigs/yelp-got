@@ -16,11 +16,11 @@ const {kingdom, container, fullscreen} = Styles;
 const GRAPHQL_ENDPOINT = "yelp-got.herokuapp.com/v1/graphql";
 
 const httpLink = new HttpLink({
-  uri: `http://${GRAPHQL_ENDPOINT}`
+  uri: `https://${GRAPHQL_ENDPOINT}`
 })
 
 const wsLink = new WebSocketLink({
-  uri: `ws://${GRAPHQL_ENDPOINT}`,
+  uri: `wss://${GRAPHQL_ENDPOINT}`,
   options:{
     reconnect: true
   }
