@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { ApolloProvider, ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client';
 import {getMainDefinition} from '@apollo/client/utilities';
 import {WebSocketLink} from '@apollo/link-ws';
-import {BrowserRouter, Switch, Route } from 'react-router-dom';
+import {HashRouter, Switch, Route } from 'react-router-dom';
 import KingdomSearch from './Components/kingdomSearch';
 import KingdomLoader from './Components/Kingdom';
 import Intro from './Components/intro';
@@ -44,7 +44,7 @@ const client = new ApolloClient({
 })
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter basename='/'>
     <ApolloProvider client={client}>
       <Box style={fullscreen}>
         <Intro />
@@ -58,7 +58,7 @@ const App = () => (
         </Grid>
       </Box>
     </ApolloProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 render(<App />, document.getElementById("root"));
